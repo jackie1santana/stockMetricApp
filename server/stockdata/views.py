@@ -3,8 +3,9 @@ from django.views import View
 import yfinance as yf
 import http.client
 import json
+from decouple import config
 
-
+SECRET_KEY = config('API_KEY')
 class StockDataView(View):
     def get(self, request, *args, **kwargs):
         try:
@@ -77,7 +78,7 @@ class StockDataView(View):
             conn = http.client.HTTPSConnection("yahoo-finance15.p.rapidapi.com")
 
             headers = {
-                'x-rapidapi-key': "",
+                'x-rapidapi-key': SECRET_KEY,
                 'x-rapidapi-host': "yahoo-finance15.p.rapidapi.com"
             }
 
