@@ -3,15 +3,17 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
- "scripts": {
-  "dev": "concurrently \"cd server && python manage.py runserver\" \"wait-on http://127.0.0.1:8000 && cd client && npm run dev\""
-},
+  "scripts": {
+    "client": "cd client && npm run dev",
+    "server": "cd server && python manage.py runserver",
+    "dev": "concurrently \"cd server && python manage.py runserver\" \"wait-on http://127.0.0.1:8000 && cd client && npm run dev\""
+  },
   "keywords": [],
-  "author": "",
+  "author": "jackie1santana <jackietristansantana@gmail.com>",
   "license": "ISC",
   "devDependencies": {
-    "concurrently": "^9.1.1",
-    "gulp": "^5.0.0",
+    "concurrently": "^9.1.2",
     "wait-on": "^8.0.1"
-  }
+  },
+  "repository": "git@github.com:jackie1santana/stockMetricApp.git"
 }
