@@ -19,6 +19,12 @@ class StockDataView(View):
             # Extract Data
             data = {}
 
+            search = yf.Search(query=symbol, news_count=8) 
+            
+              # Extract News and Quotes
+            data['news_articles']= search.news if hasattr(search, 'news') else []
+            data['quotes'] = search.quotes if hasattr(search, 'quotes') else []
+            
             # Current Price
             hist = stock.history(period="1d")
             data['current_price'] = round(hist['Close'].iloc[-1], 2) if not hist.empty else "N/A"
